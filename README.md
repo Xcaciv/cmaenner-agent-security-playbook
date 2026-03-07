@@ -12,16 +12,37 @@ Each **play** is a step-by-step security procedure with checklists, decision cri
 
 **With Claude Code (recommended):**
 
-Install as a plugin:
-```bash
+**Step 1** — Register the plugin marketplace:
+```
 /plugin marketplace add cmaenner/agent-security-playbook
 ```
 
-Then install a skill set:
-- `code-security-skills` — Code review, SCA, secrets, API, and web security
-- `ai-security-skills` — Agent audit, LLM risk, agentic AI, MCP review, prompt injection
+**Step 2** — Install a skill set:
+```
+/plugin install code-security-skills@agent-security-playbook
+/plugin install ai-security-skills@agent-security-playbook
+```
 
-Or point Claude at any play directly — ask it to "review this code for security issues" and it will pick up the right procedure.
+| Plugin | Skills Included |
+|--------|----------------|
+| `code-security-skills` | code-review-security, sca-audit, secrets-scan, api-security-review, web-security-review |
+| `ai-security-skills` | agent-security-audit, llm-risk-assess, agentic-ai-risk-assess, mcp-server-review, prompt-injection-test |
+
+**Step 3** — Use the skills by mentioning the task in conversation:
+
+```
+"Review this code for security issues"
+"Scan my dependencies for CVEs"
+"Audit this MCP server configuration"
+"Test this chatbot for prompt injection"
+```
+
+Claude will automatically activate the relevant skill based on context.
+
+**Local development** — To test from a local clone instead of GitHub:
+```
+/plugin install /path/to/agent-security-playbook
+```
 
 **Without Claude Code:**
 
