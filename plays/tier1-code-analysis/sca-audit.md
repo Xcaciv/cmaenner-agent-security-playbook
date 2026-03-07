@@ -64,10 +64,15 @@ Use available tools in order of preference:
    trivy fs --format json --scanners vuln <project_path>
    ```
 
-If no scanner is installed, fall back to manual analysis:
-- Read the lockfile to extract exact dependency versions
-- Cross-reference against known CVE databases using web search
-- Focus on direct dependencies first, then high-severity transitive vulnerabilities
+If no scanner is installed, **stop and ask the user to install one** rather than attempting manual analysis. Even small projects have 50+ dependencies — manually cross-referencing versions against CVE databases is not cost-effective. Recommend:
+```bash
+# Fastest to install, covers all ecosystems
+brew install osv-scanner    # or: npm install -g osv-scanner
+# Node.js projects already have this
+npm audit --json
+```
+
+For manual triage of individual packages, use the [OSV.dev vulnerability database](https://osv.dev/list) to search by package name or CVE.
 
 ### 3. Analyze Results
 

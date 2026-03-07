@@ -18,7 +18,7 @@ Scan dependencies for known CVEs by following the full procedure in `plays/tier1
    - `pip-audit -r requirements.txt --format=json` (Python)
    - `govulncheck ./...` (Go)
    - `trivy fs --format json --scanners vuln <path>` (multi-ecosystem)
-   - If no scanner available, manually cross-reference versions against CVE databases.
+   - If no scanner is installed, **stop and ask the user to install one** (e.g., `brew install osv-scanner`). Manual analysis is not viable — even small projects have 50+ dependencies. For individual package triage, point the user to [OSV.dev](https://osv.dev/list).
 
 3. **Analyze Results** — For each vulnerability: determine reachability (is the vulnerable code path used?), check exploitability context (deployment matters), and identify fix availability (patch vs major version bump).
 
