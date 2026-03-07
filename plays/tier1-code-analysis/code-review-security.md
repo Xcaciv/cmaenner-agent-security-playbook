@@ -1,5 +1,7 @@
 # Play: Security Code Review
 
+A security code review identifies vulnerabilities in application logic, authentication, authorization, cryptography, and data handling. This play structures the review around OWASP weakness classes (injection, auth, crypto, etc.) and is applicable to any language or framework. Reviews can target full codebases, pull request diffs, or specific modules, and findings are mapped to OWASP standards and OpenCRE for multi-framework traceability.
+
 Review code changes or codebases for security vulnerabilities, mapping findings to OWASP standards and OpenCRE cross-references for multi-framework traceability.
 
 ## Trigger Conditions
@@ -114,7 +116,7 @@ Apply checks specific to the detected framework:
 
 ### 4. Diff-Specific Analysis (for PR reviews)
 
-When reviewing a diff rather than full codebase:
+When reviewing a diff rather than a full codebase:
 - Focus on changed lines and their immediate context
 - Check if security controls in surrounding (unchanged) code are preserved
 - Verify that new endpoints have auth/authz matching existing patterns
@@ -155,6 +157,26 @@ For each issue:
 | LOW | N |
 | INFO | N |
 ```
+
+## Tools & Resources
+
+### Static Analysis Tools
+- **Semgrep** — Multi-language pattern-based SAST; highly customizable rules
+- **CodeQL (GitHub)** — Query-based code analysis for Java, C++, C#, Go, Python, TypeScript, JavaScript, Ruby
+- **SonarQube** — Code quality and security scanning with OWASP Top 10 mappings
+- **Checkmarx/CxSAST** — Enterprise SAST with custom rule authoring
+- **Snyk Code** — Developer-first SAST integrated into IDEs and CI/CD
+
+### Language-Specific
+- **Bandit** (Python) — Finds common security issues in Python code
+- **Brakeman** (Ruby) — Scans Rails apps for OWASP risks
+- **go-vuln-check** (Go) — Detects known vulnerabilities in Go code
+- **ShiftLeft/Taint** (Java, Python, Go) — Data flow analysis for injection detection
+
+### Code Review Checkers
+- **OWASP Cheat Sheet Series** — Per-vulnerability quick guides and remediation
+- **CWE Top 25** — Prioritized list of most dangerous weakness patterns
+- **ASVS Interactive** — Maps review items to ASVS verification levels (L1/L2/L3)
 
 ## References
 
