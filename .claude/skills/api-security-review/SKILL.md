@@ -1,39 +1,62 @@
 ---
 name: api-security-review
-description: Review API definitions and implementations against the OWASP API Security Top 10. Use when reviewing OpenAPI/Swagger specs, auditing REST/GraphQL/gRPC implementations, or checking API gateway and middleware configuration for security issues.
-allowed-tools: Read, Grep, Glob, Bash, Agent
+description: Comprehensive API security review against OWASP API Security Top 10 (2023). Use when reviewing OpenAPI/Swagger specs, auditing REST/GraphQL/gRPC implementations, testing authentication mechanisms, or checking API gateway configurations. Covers BOLA/IDOR, broken auth, mass assignment, rate limiting, SSRF, and more with real-world attack scenarios.
+allowed-tools: Read, Grep, Glob, Bash, WebFetch, Agent
 ---
 
 # API Security Review
 
-Review API security by following the full procedure in `plays/tier1-code-analysis/api-security-review.md`.
+Perform comprehensive API security assessment following `plays/tier1-code-analysis/api-security-review.md`.
 
 ## Steps
 
-1. **API Surface Mapping** — Parse OpenAPI spec or scan route definitions to enumerate all endpoints, auth requirements, request/response schemas, and rate limiting.
+1. **Discovery & Reconnaissance**
+   - Parse OpenAPI/Swagger specs or scan code for endpoints
+   - Identify authentication mechanisms (JWT, OAuth 2.0, API keys, mTLS)
+   - Map API gateway and middleware configurations
+   - Enumerate all API versions and deprecated endpoints
 
-2. **Assess Each API Security Top 10 Risk**:
-   - **API1 BOLA** — Object ownership verified on every access? Predictable IDs? Batch endpoints filtered?
-   - **API2 Broken Authentication** — Unauthenticated endpoints? Consistent auth middleware? Brute-force protection?
-   - **API3 Broken Object Property Level Authorization** — Mass assignment? Response over-exposure? Field-level authz?
-   - **API4 Unrestricted Resource Consumption** — Rate limiting? Pagination limits? Upload size limits? Query complexity limits?
-   - **API5 Broken Function Level Authorization** — Admin endpoints protected? Role checks on function not UI? HTTP method restrictions?
-   - **API6 Unrestricted Sensitive Business Flows** — Automated abuse prevention? CAPTCHA? Business logic rate limits?
-   - **API7 SSRF** — URL parameters validated against allowlist? Internal services reachable? Cloud metadata blocked?
-   - **API8 Security Misconfiguration** — CORS restrictive? Security headers present? Error responses generic? Debug disabled?
-   - **API9 Improper Inventory** — Undocumented endpoints? Deprecated routes still accessible? Old API versions live?
-   - **API10 Unsafe Consumption** — Third-party API responses validated? Timeouts and circuit breakers? Webhook auth?
+2. **Authentication Deep Dive**
+   - JWT security (algorithm confusion, weak signing, token expiration)
+   - OAuth 2.0 flows (PKCE, state parameter, redirect URI validation)
+   - API key exposure and rotation policies
+   - Session management and token storage
 
-3. **Schema Validation Depth** — For OpenAPI specs: required fields, maxLength, min/max constraints, enums, `additionalProperties: false`, format constraints.
+3. **Assess All 10 OWASP API Risks** with attack scenarios:
+   - **API1 BOLA** — IDOR via predictable IDs, batch endpoint bypasses, ownership verification gaps
+   - **API2 Broken Authentication** — JWT attacks, OAuth flaws, brute force, credential stuffing
+   - **API3 BOPA** — Mass assignment, response over-exposure, field-level authz bypasses
+   - **API4 Resource Consumption** — Rate limit bypasses, pagination abuse, GraphQL DoS
+   - **API5 BFLA** — Admin endpoint discovery, horizontal/vertical privilege escalation
+   - **API6 Business Flows** — Automated abuse, inventory exhaustion, scraping attacks
+   - **API7 SSRF** — URL bypasses, DNS rebinding, cloud metadata access
+   - **API8 Misconfiguration** — CORS bypasses, verbose errors, missing headers
+   - **API9 Inventory** — Shadow APIs, zombie endpoints, version confusion
+   - **API10 Unsafe Consumption** — XXE, deserialization, webhook replay attacks
 
-4. **GraphQL-Specific** (if applicable) — Introspection disabled in prod? Depth limiting? Complexity analysis? Field-level authz? Batch limiting?
+4. **Automated Testing**
+   - Run API security scanners (OWASP ZAP, Burp Suite, Postman tests)
+   - Test for common vulnerabilities with specific payloads
+   - Validate rate limiting and throttling mechanisms
+
+5. **API Gateway & Infrastructure Review**
+   - Kong, nginx, Envoy, AWS API Gateway configurations
+   - WAF rules and bypass opportunities
+   - TLS configuration and certificate validation
 
 ## Output
 
-API overview (type, spec availability, endpoint count, auth mechanism), risk matrix for all 10 categories, findings using `templates/finding.md`, and prioritized recommendations.
+Comprehensive API security report including:
+- API surface inventory with authentication mechanisms
+- Risk matrix with severity ratings for all 10 categories
+- Detailed findings with proof-of-concept examples
+- Exploit scenarios and business impact analysis
+- Prioritized remediation roadmap with code examples
+- Testing artifacts and vulnerability evidence
 
 ## OWASP References
 
 - OWASP API Security Top 10 (2023)
 - OWASP ASVS v5.0 — V13: API and Web Service
-- OWASP Cheat Sheet: REST Security, GraphQL Security
+- OWASP Testing Guide: WSTG-APIT
+- OWASP Cheat Sheet: REST Security, GraphQL Security, JWT Security, OAuth 2.0
