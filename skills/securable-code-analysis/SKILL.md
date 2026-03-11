@@ -34,11 +34,11 @@ Analyze code for securable engineering qualities by following the full procedure
 
 7. **Dependency Securability** — Evaluate dependencies against SSEM attributes (analyzability, modifiability, testability, trustworthiness, reliability).
 
-8. **Produce Findings** — SSEM attribute scorecard (HIGH/MED/LOW per attribute), findings with SSEM category, attribute, FIASSE section reference, and engineering remediation.
+8. **Produce Findings** — Score each sub-attribute 0–10 using rubrics, calculate weighted pillar scores and overall SSEM score, assign grade (Excellent/Good/Adequate/Fair/Poor), generate SSEM Score Summary, detailed findings per pillar with expected improvement estimates, and 45-item evaluation checklist.
 
 ## Output
 
-SSEM Attribute Scorecard (9 attributes + Transparency rated HIGH/MED/LOW), findings sorted by severity using `templates/finding.md` adapted for SSEM deficits, positive observations, prioritized recommendations, and severity count table.
+Part 1: SSEM Score Summary (overall score, grade, pillar breakdown with weights, top strengths, top improvement opportunities). Part 2: Detailed Findings per pillar (strengths with evidence, weaknesses with examples, recommendations with priority and expected point improvement). Part 3: Appendix A — 45-item Evaluation Checklist (15 per pillar) with pass/fail summary percentages. Severity count table.
 
 ## OWASP & FIASSE References
 
