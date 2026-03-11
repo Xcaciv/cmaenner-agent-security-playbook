@@ -25,7 +25,7 @@ Each **play** is a step-by-step security procedure with checklists, decision cri
 
 | Plugin | Skills Included |
 |--------|----------------|
-| `code-security-skills` | securable-code-analysis, code-review-security, sca-audit, secrets-scan, api-security-review, web-security-review |
+| `code-security-skills` | securability-engineering-review, code-review-security, sca-audit, secrets-scan, api-security-review, web-security-review |
 | `ai-security-skills` | agent-security-audit, llm-risk-assess, agentic-ai-risk-assess, mcp-server-review, prompt-injection-test |
 
 **Step 3** — Use the skills by mentioning the task in conversation:
@@ -69,7 +69,7 @@ Foundational engineering assessment — evaluate whether code possesses inherent
 
 | Play | What It Does |
 |------|-------------|
-| [securable-code-analysis](plays/tier0-code-analysis/securable-code-analysis.md) | Assess code against FIASSE/SSEM securable attributes: Maintainability, Trustworthiness, Reliability, and Transparency |
+| [securability-engineering-review](plays/tier1-code-analysis/securability-engineering-review.md) | Assess code against FIASSE/SSEM securable attributes: Maintainability, Trustworthiness, Reliability, and Transparency |
 
 ### Tier 1: Code & Dependency Analysis
 
