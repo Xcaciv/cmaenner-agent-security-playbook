@@ -25,7 +25,7 @@ Each **play** is a step-by-step security procedure with checklists, decision cri
 
 | Plugin | Skills Included |
 |--------|----------------|
-| `code-security-skills` | code-review-security, sca-audit, secrets-scan, api-security-review, web-security-review |
+| `code-security-skills` | securable-code-analysis, code-review-security, sca-audit, secrets-scan, api-security-review, web-security-review |
 | `ai-security-skills` | agent-security-audit, llm-risk-assess, agentic-ai-risk-assess, mcp-server-review, prompt-injection-test |
 
 **Step 3** — Use the skills by mentioning the task in conversation:
@@ -62,6 +62,14 @@ The differentiator — security procedures purpose-built for the AI agent era.
 | [llm-risk-assess](plays/tier4-ai-security/llm-risk-assess.md) | Assess LLM applications against OWASP Top 10 for LLM Applications |
 | [mcp-server-review](plays/tier4-ai-security/mcp-server-review.md) | Review MCP server implementations for overpermissioning, injection, data exposure |
 | [prompt-injection-testing](plays/tier4-ai-security/prompt-injection-testing.md) | Test LLM apps against 18 attack techniques, 20 evasions, 13 intents |
+
+### Tier 0: Securable Code Analysis (FIASSE/SSEM)
+
+Foundational engineering assessment — evaluate whether code possesses inherent securable qualities.
+
+| Play | What It Does |
+|------|-------------|
+| [securable-code-analysis](plays/tier0-code-analysis/securable-code-analysis.md) | Assess code against FIASSE/SSEM securable attributes: Maintainability, Trustworthiness, Reliability, and Transparency |
 
 ### Tier 1: Code & Dependency Analysis
 

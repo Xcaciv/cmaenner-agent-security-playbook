@@ -79,6 +79,7 @@ agent-security-playbook/
 ├── .claude-plugin/               # Plugin marketplace config for Claude Code installation
 │   └── marketplace.json
 ├── skills/                       # Agent Skills (SKILL.md per skill, installable as plugin)
+│   ├── securable-code-analysis/
 │   ├── agent-security-audit/
 │   ├── agentic-ai-risk-assess/
 │   ├── api-security-review/
@@ -118,7 +119,7 @@ agent-security-playbook/
 | Tier | Focus | Status |
 |------|-------|--------|
 | **Tier 4** | AI/Agent Security — prompt injection, excessive agency, MCP risks | Built |
-| **Tier 1** | Code Analysis — SCA, code review, secrets, API security | Built |
+| **Tier 1** | Code Analysis — Securability, SCA, code review, secrets, API security | Built |
 | **Tier 2** | Design Review — threat modeling, ASVS verification, infra hardening | Planned |
 | **Tier 3** | Testing — WSTG checklist, DAST scanning, attack surface mapping | Planned |
 | **Tier 5** | Governance — SAMM maturity, compliance mapping, reporting | Planned |
